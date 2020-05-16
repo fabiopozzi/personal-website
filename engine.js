@@ -9,17 +9,18 @@ const object_to_render = {
 }
 
 // lista dei file
-// iterare su tutti i file della lista
-// se esiste il template
-// apri e leggi il template
-// fai render dell'oggetto
-// scrivi il file
-const data = fs.readFileSync('template.ms', 'utf8')
-const output = Mustache.render(data, object_to_render)
+const lista_file = [ 'index', 'about' ]
 
-fs.writeFile('template.html', output, (err) => {
-    // throws an error, you could also catch it here
-    if (err) throw err;
+lista_file.forEach( item => {
+    const input_file = item + '.ms'
+    const output_file = item + '.html'
 
-    console.log('File saved!');
+    const data = fs.readFileSync(input_file, 'utf8')
+    const output = Mustache.render(data, object_to_render)
+    fs.writeFile(output_file, output, (err) => {
+        // throws an error, you could also catch it here
+        if (err) throw err;
+
+        console.log('File ' + output_file + ' saved!');
+    })
 })
