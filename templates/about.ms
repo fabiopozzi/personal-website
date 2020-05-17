@@ -45,7 +45,7 @@
                     Dopo una esperienza di alcuni anni come consulente in Magneti Marelli Motorsport ora insegno informatica e tengo corsi di programmazione.
                 </p>
                 <p>
-                    Uso Linux dal 2004, Mac OS dal 2006, Windows solo se costretto.
+                    Uso <a href="linux.html">Linux</a> dal 2004, Mac OS dal 2006, Windows solo se costretto.
                 </p>
                 <p>
                   Nel tempo libero amo viaggiare in bici, da solo oppure in compagnia, lo trovo il miglior modo di visitare una certa zona:<br/>

@@ -37,18 +37,9 @@
                 </nav>
             </aside>
             <main class="col bg-faded py-3 flex-grow-1">
-                <p>
-                {{testo}}
-                </p>
+            <h4> Ultimi articoli </h4>
             </main>
         </div>
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="row text-center">
-                    <div class="col-lg-12">Fatto a mano con Bootstrap</div>
-                </div>
-            </div>
-        </footer>
     </div>
 
     <!-- Optional JavaScript -->
