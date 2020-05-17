@@ -12,9 +12,7 @@
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css" rel="stylesheet" />
-    <style>
-        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
-    </style>
+    <link href="bici.css" rel="stylesheet" />
 
     <title>Fabio Pozzi</title>
   </head>
