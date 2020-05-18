@@ -46,7 +46,7 @@
               <h4> Ultimi itinerari </h4>
               <div id='map' class='map'> </div>
               <button id="zoomto" class="btn-control">Zoom to bounds</button>
-                    <script>
+              <script>
                     mapboxgl.accessToken = 'pk.eyJ1IjoiZmFiaW9wb3p6aSIsImEiOiJja2FiNmYwanMwejZpMnhzOWVwZGVuZGtpIn0.mTGDeI7WuNY7HNxcrjk_UA';
                     var geojson = {{{gpx}}} ;
                     var map = new mapboxgl.Map({
@@ -73,6 +73,8 @@
                         'line-width': 5
                       }
                     });
+                    map.addControl(new mapboxgl.NavigationControl());
+
                     document.getElementById('zoomto').addEventListener('click', function() {
                       // Geographic coordinates of the LineString
                       var coordinates = geojson.features[0].geometry.coordinates;
