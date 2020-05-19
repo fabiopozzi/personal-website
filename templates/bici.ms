@@ -47,7 +47,7 @@
               <div id='map' class='map'> </div>
               <button id="zoomto" class="btn-control">Zoom to bounds</button>
               <script>
-                    mapboxgl.accessToken = 'pk.eyJ1IjoiZmFiaW9wb3p6aSIsImEiOiJja2FiNmYwanMwejZpMnhzOWVwZGVuZGtpIn0.mTGDeI7WuNY7HNxcrjk_UA';
+                    mapboxgl.accessToken = '{{mapbox_key}}';
                     var geojson = {{{gpx}}} ;
                     var map = new mapboxgl.Map({
                       container: 'map',

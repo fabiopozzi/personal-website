@@ -1,7 +1,9 @@
 const fs = require('fs')
 const path = require('path')
 const Mustache = require('mustache')
-const tj = require('@mapbox/togeojson'),
+const tj = require('@mapbox/togeojson')
+require('dotenv').config()
+
 // node doesn't have xml parsing or a dom. use xmldom
 DOMParser = require('xmldom').DOMParser;
 
@@ -13,7 +15,8 @@ const object_to_render = {
         { "link": "about.html", "title": "About" },
         { "link": "bici.html", "title": "Bici" }
     ],
-    gpx: JSON.stringify(converted)
+    gpx: JSON.stringify(converted),
+    mapbox_key: process.env.MAPBOX_API_KEY
 }
 
 // lista dei file
