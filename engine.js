@@ -21,6 +21,26 @@ const object_to_render = {
 
 // lista dei file
 const lista_file = [ 'index', 'about', 'bici', 'linux' ]
+const cssDirectory = './static/css'
+// copy static files
+// CSS
+try {
+    const fileList = fs.readdirSync(cssDirectory)
+    const destinationFolder = path.join('content','css')
+    if (!fs.existsSync(destinationFolder)) {
+        console.log('directory ' + destinationFolder + ' mancante')
+        fs.mkdirSync(destinationFolder)
+        console.log('creato ' + destinationFolder)
+    }
+    fileList.forEach( item => {
+        const sourceFile = path.join(cssDirectory, item)
+        const destFile = path.join(destinationFolder, item)
+        fs.copyFileSync(sourceFile, destFile)
+        console.log('copiato ' + item)
+    })
+} catch(e) {
+    console.log(e)
+}
 
 lista_file.forEach( item => {
     const input_file = path.join('templates', item + '.ms')
@@ -35,4 +55,3 @@ lista_file.forEach( item => {
         console.log('File ' + output_file + ' saved!');
     })
 })
-
