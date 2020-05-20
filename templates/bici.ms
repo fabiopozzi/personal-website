@@ -12,7 +12,7 @@
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css" rel="stylesheet" />
-    <link href="bici.css" rel="stylesheet" />
+    <link href="css/bici.css" rel="stylesheet" />
 
     <title>Fabio Pozzi</title>
   </head>
@@ -43,56 +43,66 @@
                 </nav>
             </aside>
             <main class="col bg-faded py-3 flex-grow-1">
-              <h4> Ultimi itinerari </h4>
-              <div id='map' class='map'> </div>
-              <button id="zoomto" class="btn-control">Zoom to bounds</button>
-              <script>
-                    mapboxgl.accessToken = '{{mapbox_key}}';
-                    var geojson = {{{gpx}}} ;
-                    var map = new mapboxgl.Map({
-                      container: 'map',
-                      style: 'mapbox://styles/mapbox/light-v10',
-                      center: [11.11, 45.98],
-                      zoom: 10
-                    });
-                    map.on('load', function() {
-                      map.addSource('LineString', {
-                        'type': 'geojson',
-                        'data': geojson
-                      });
-                      map.addLayer({
-                        'id': 'LineString',
-                        'type': 'line',
-                        'source': 'LineString',
-                        'layout': {
-                        'line-join': 'round',
-                        'line-cap': 'round'
-                      },
-                      'paint': {
-                        'line-color': '#BF93E4',
-                        'line-width': 5
-                      }
-                    });
-                    map.addControl(new mapboxgl.NavigationControl());
+              <div class="container-fluid">
+                <div class="row">
+                  <div id='map' class='col-md-6'> </div>
+                  <div class='col-md-6'>
+                    Statistiche giro:
+                    <ul>
+                      <li>lunghezza in km</li>
+                      <li>velocita' media</li>
+                    </ul>
+                  </div>
+                  <button id="zoomto" class="btn-control">Zoom to bounds</button>
+                  <script>
+                        mapboxgl.accessToken = '{{mapbox_key}}';
+                        var geojson = {{{gpx}}} ;
+                        var map = new mapboxgl.Map({
+                          container: 'map',
+                          style: 'mapbox://styles/mapbox/light-v10',
+                          center: [11.11, 45.98],
+                          zoom: 10
+                        });
+                        map.on('load', function() {
+                          map.addSource('LineString', {
+                            'type': 'geojson',
+                            'data': geojson
+                          });
+                          map.addLayer({
+                            'id': 'LineString',
+                            'type': 'line',
+                            'source': 'LineString',
+                            'layout': {
+                            'line-join': 'round',
+                            'line-cap': 'round'
+                          },
+                          'paint': {
+                            'line-color': '#BF93E4',
+                            'line-width': 5
+                          }
+                        });
+                        map.addControl(new mapboxgl.NavigationControl());
 
-                    document.getElementById('zoomto').addEventListener('click', function() {
-                      // Geographic coordinates of the LineString
-                      var coordinates = geojson.features[0].geometry.coordinates;
+                        document.getElementById('zoomto').addEventListener('click', function() {
+                          // Geographic coordinates of the LineString
+                          var coordinates = geojson.features[0].geometry.coordinates;
 
-                      // Pass the first coordinates in the LineString to `lngLatBounds` &
-                      // wrap each coordinate pair in `extend` to include them in the bounds
-                      // result. A variation of this technique could be applied to zooming
-                      // to the bounds of multiple Points or Polygon geomteries - it just
-                      // requires wrapping all the coordinates with the extend method.
-                      var bounds = coordinates.reduce(function(bounds, coord) {
-                        return bounds.extend(coord);
-                      }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
-                      map.fitBounds(bounds, {
-                        padding: 20
+                          // Pass the first coordinates in the LineString to `lngLatBounds` &
+                          // wrap each coordinate pair in `extend` to include them in the bounds
+                          // result. A variation of this technique could be applied to zooming
+                          // to the bounds of multiple Points or Polygon geomteries - it just
+                          // requires wrapping all the coordinates with the extend method.
+                          var bounds = coordinates.reduce(function(bounds, coord) {
+                            return bounds.extend(coord);
+                          }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
+                          map.fitBounds(bounds, {
+                            padding: 20
+                          });
+                        });
                       });
-                    });
-                  });
-                    </script>
+                  </script>
+                </div>
+              </div>
             </main>
         </div>
     </div>
