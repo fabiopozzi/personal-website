@@ -13,5 +13,8 @@
     "@mapbox/togeojson": "^0.16.0",
     "dotenv": "^8.2.0",
     "mustache": "^4.0.1"
+  },
+  "devDependencies": {
+    "jest": "^26.0.1"
   }
 }
