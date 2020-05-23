@@ -27,9 +27,10 @@ const createCSSFolder = (destinationFolder) => {
         // mi baso sulla posizione corrente del file e vado a creare le
         // sottodirectory
         if (!fs.existsSync(destinationFolder)) {
-            console.log('directory ' + destinationFolder + ' mancante')
             fs.mkdirSync(destinationFolder)
             console.log('creato ' + destinationFolder)
+        } else {
+            console.log('directory esistente')
         }
     } catch(e) {
         console.log(e)
