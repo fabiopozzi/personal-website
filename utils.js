@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 // TODO: organizzare costanti
 
-const copyCSSFiles = (fileList, cssDirectory, destinationFolder) => {
+const copyCSSFiles = (cssDirectory, destinationFolder) => {
     // CSS
     try {
         const fileList = fs.readdirSync(cssDirectory)
