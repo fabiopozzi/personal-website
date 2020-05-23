@@ -2,17 +2,14 @@ const fs = require('fs')
 const path = require('path')
 const Mustache = require('mustache')
 
-const renderList = (listaFile, object_to_render) => {
+const renderList = (listaPagine, view) => {
 
-    // TODO: fare in modo che possa usare lo stesso template per piu' pagine.
-    // Quindi serve una struttura che associ ad ogni pagina/filename il template da
-    // usare
-    listaFile.forEach(item => {
-        const input_file = path.join('templates', item + '.ms')
-        const output_file = path.join('content', item + '.html')
+    listaPagine.forEach(item => {
+        const input_file = path.join('templates', item.template)
+        const output_file = path.join('content', item.page + '.html')
 
         const data = fs.readFileSync(input_file, 'utf8')
-        const output = Mustache.render(data, object_to_render)
+        const output = Mustache.render(data, view)
         fs.writeFile(output_file, output, (err) => {
             // throws an error, you could also catch it here
             if (err) throw err;
