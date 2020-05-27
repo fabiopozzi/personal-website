@@ -6,12 +6,7 @@ const copyCSSFiles = (cssDirectory, destinationFolder) => {
     // CSS
     try {
         const fileList = fs.readdirSync(cssDirectory)
-        if (!fs.existsSync(destinationFolder)) {
-            console.log('directory ' + destinationFolder + ' mancante')
-            fs.mkdirSync(destinationFolder)
-            console.log('creato ' + destinationFolder)
-        }
-        fileList.forEach( item => {
+        fileList.forEach(item => {
             const sourceFile = path.join(cssDirectory, item)
             const destFile = path.join(destinationFolder, item)
             fs.copyFileSync(sourceFile, destFile)
