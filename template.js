@@ -21,6 +21,21 @@ const renderList = (listaPagine, view) => {
     })
 }
 
+const loadTrackFiles = (trackDirectory) => {
+    var trackArray = [];
+
+    // ottengo lista tracce
+    const listaTracce = fs.readdirSync(trackDirectory);
+    listaTracce.forEach(traccia => {
+        // read json file with track metadata
+        const inputFile = path.join(trackDirectory, traccia)
+        var trackObj = JSON.parse(fs.readFileSync(inputFile, "utf8"));
+        trackArray.push(trackObj);
+    });
+
+    return trackArray;
+}
+
 const renderTracks = (trackDirectory, gpxDirectory) => {
     const view = {
       sidebar: [
@@ -29,14 +44,7 @@ const renderTracks = (trackDirectory, gpxDirectory) => {
       ]
     };
 
-    // ottengo lista tracce
-    const listaTracce = fs.readdirSync(trackDirectory);
-
-    listaTracce.forEach(traccia => {
-        // read json file with track metadata
-        const inputFile = path.join(trackDirectory, traccia)
-        var trackObj = JSON.parse(fs.readFileSync(inputFile, "utf8"));
-
+    trackArray.forEach(trackObj => {
         // read and convert gpx data
         const gpxFile = path.join(gpxDirectory, trackObj.nome_file + '.gpx')
         var gpxString = fs.readFileSync(gpxFile, "utf8");
@@ -64,6 +72,7 @@ const renderTracks = (trackDirectory, gpxDirectory) => {
 }
 
 module.exports = {
+    loadTrackFiles,
     renderList,
     renderTracks
 }
