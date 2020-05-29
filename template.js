@@ -5,19 +5,24 @@ const tj = require("@mapbox/togeojson");
 // node doesn't have xml parsing or a dom. use xmldom
 const DOMParser = require("xmldom").DOMParser;
 
-const renderList = (listaPagine, view) => {
-    listaPagine.forEach(item => {
-        const input_file = path.join('templates', item.template)
-        const output_file = path.join('content', item.page + '.html')
+const renderTemplate = (templateName, outputName, view) => {
+        // render template
+        const templateFile = path.join('templates', templateName);
+        const outputFile = path.join('content', outputName + '.html');
+        const templateData = fs.readFileSync(templateFile, 'utf8');
 
-        const data = fs.readFileSync(input_file, 'utf8')
-        const output = Mustache.render(data, view)
-        fs.writeFile(output_file, output, (err) => {
+        const pageData = Mustache.render(templateData, view);
+        fs.writeFile(outputFile, pageData, (err) => {
             // throws an error, you could also catch it here
             if (err) throw err;
 
-            console.log('File ' + output_file + ' saved!');
+            console.log('File ' + outputFile + ' saved!');
         })
+}
+
+const renderList = (listaPagine, view) => {
+    listaPagine.forEach(item => {
+        renderTemplate(item.template, item.page, view);
     })
 }
 
@@ -44,6 +49,8 @@ const renderTracks = (trackDirectory, gpxDirectory) => {
       ]
     };
 
+    const trackArray = loadTrackFiles(trackDirectory);
+
     trackArray.forEach(trackObj => {
         // read and convert gpx data
         const gpxFile = path.join(gpxDirectory, trackObj.nome_file + '.gpx')
@@ -56,23 +63,21 @@ const renderTracks = (trackDirectory, gpxDirectory) => {
         trackObj.mapbox_key = process.env.MAPBOX_API_KEY;
         trackObj.sidebar = view.sidebar;
 
-        // render template
-        // TODO: refactor into function
-        const templateFile = path.join('templates', 'bici.ms');
-        const outputFile = path.join('content', trackObj.nome_file + '.html');
-        const templateData = fs.readFileSync(templateFile, 'utf8');
-        const pageData = Mustache.render(templateData, trackObj);
-        fs.writeFile(outputFile, pageData, (err) => {
-            // throws an error, you could also catch it here
-            if (err) throw err;
-
-            console.log('File ' + outputFile + ' saved!');
-        })
+        renderTemplate('bici.ms', trackObj.nome_file, trackObj);
     })
+
+    let trackList = {
+      listaTracce: []
+    };
+    trackArray.forEach(trackObj => {
+        trackList.listaTracce.push({link: trackObj.nome_file + '.html', title: trackObj.nome});
+    });
+    return trackList;
 }
 
 module.exports = {
     loadTrackFiles,
+    renderTemplate,
     renderList,
     renderTracks
 }
