@@ -28,4 +28,5 @@ utils.copyCSSFiles(cssDirectory, destinationFolder);
 template.renderList(lista_pagine, view);
 
 const trackList = template.renderTracks(trackDirectory, gpxDirectory);
+trackList.sidebar = view.sidebar;
 template.renderTemplate('index_bici.ms', 'bici', trackList);

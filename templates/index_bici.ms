@@ -44,11 +44,12 @@
             </aside>
             <main class="col bg-faded py-3 flex-grow-1">
               <div class="container-fluid">
-                <div class="row">
+                  <h1>Lista percorsi</h1>
+                  <ul>
                     {{#listaTracce}}
-                        <a class="nav-link pl-0 text-info" href="{{link}}">{{title}}</a>
+                        <li><a class="nav-link pl-0 text-info" href="{{link}}">{{title}}</a></li>
                     {{/listaTracce}}
-                </div>
+                  </ul>
               </div>
             </main>
         </div>
