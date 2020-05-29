@@ -49,19 +49,21 @@
                   <div class='col-md-6'>
                     Statistiche giro:
                     <ul>
-                      <li>lunghezza in km</li>
-                      <li>velocita' media</li>
+                      <li>nome: {{nome}}</li>
+                      <li>lunghezza in km: {{distanza}}</li>
+                      <li>velocita' media: {{media}}</li>
                     </ul>
                   </div>
-                  <button id="zoomto" class="btn-control">Zoom to bounds</button>
                   <script>
                         mapboxgl.accessToken = '{{mapbox_key}}';
                         var geojson = {{{gpx}}} ;
+                        var coordinates = geojson.features[0].geometry.coordinates;
+                        var middlePoint = coordinates[Math.round(coordinates.length/2)];
                         var map = new mapboxgl.Map({
                           container: 'map',
                           style: 'mapbox://styles/mapbox/light-v10',
-                          center: [11.11, 45.98],
-                          zoom: 10
+                          center: [middlePoint[0], middlePoint[1]],
+                          zoom: 9 
                         });
                         map.on('load', function() {
                           map.addSource('LineString', {
@@ -82,23 +84,6 @@
                           }
                         });
                         map.addControl(new mapboxgl.NavigationControl());
-
-                        document.getElementById('zoomto').addEventListener('click', function() {
-                          // Geographic coordinates of the LineString
-                          var coordinates = geojson.features[0].geometry.coordinates;
-
-                          // Pass the first coordinates in the LineString to `lngLatBounds` &
-                          // wrap each coordinate pair in `extend` to include them in the bounds
-                          // result. A variation of this technique could be applied to zooming
-                          // to the bounds of multiple Points or Polygon geomteries - it just
-                          // requires wrapping all the coordinates with the extend method.
-                          var bounds = coordinates.reduce(function(bounds, coord) {
-                            return bounds.extend(coord);
-                          }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
-                          map.fitBounds(bounds, {
-                            padding: 20
-                          });
-                        });
                       });
                   </script>
                 </div>
