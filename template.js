@@ -63,7 +63,7 @@ const renderTracks = (trackDirectory, gpxDirectory) => {
         trackObj.mapbox_key = process.env.MAPBOX_API_KEY;
         trackObj.sidebar = view.sidebar;
 
-        renderTemplate('bici.ms', trackObj.nome_file, trackObj);
+        renderTemplate('bici.mustache', trackObj.nome_file, trackObj);
     })
 
     let trackList = {

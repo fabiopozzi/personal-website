@@ -20,6 +20,7 @@ beforeAll(() => {
     fs.writeFileSync(trackName, JSON.stringify(trackData), (err) => {
         if (err) throw err;
     });
+    // TODO: creare template file
 });
 
 /*
@@ -34,8 +35,17 @@ it('works on the right files', () => {
 });
 */
 it('loads JSON data correctly', () => {
-    let data = template.loadTrackFiles(trackDir);
     const trackArray = [trackData];
+    let data = template.loadTrackFiles(trackDir);
 
     expect(data).toEqual(trackArray);
 });
+
+/*
+it('reads the right bike template file', () => {
+    fs.readFileSync = jest.fn();
+    template.renderBikeTemplate(trackData);
+
+    expect(fs.readFileSync).toHaveBeenCalledWith();
+});
+*/
