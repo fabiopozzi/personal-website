@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const Mustache = require('mustache')
+const Handlebars = require("handlebars");
 const tj = require("@mapbox/togeojson");
 // node doesn't have xml parsing or a dom. use xmldom
 const DOMParser = require("xmldom").DOMParser;
@@ -11,7 +11,8 @@ const renderTemplate = (templateName, outputName, view) => {
         const outputFile = path.join('content', outputName + '.html');
         const templateData = fs.readFileSync(templateFile, 'utf8');
 
-        const pageData = Mustache.render(templateData, view);
+        const template = Handlebars.compile(templateData)
+        const pageData = template(view);
         fs.writeFile(outputFile, pageData, (err) => {
             // throws an error, you could also catch it here
             if (err) throw err;
