@@ -17,13 +17,18 @@ const lista_pagine = [
   { page: "linux", template: "linux.mustache" },
 ];
 const cssDirectory = "./static/css";
+const imgDirectory = "./static/img";
 const trackDirectory = "./track_data"
 const gpxDirectory = "./gpx"
-const destinationFolder = path.join("content", "css");
+const cssDestinationFolder = path.join("content", "css");
+const imgDestinationFolder = path.join("content", "img");
 
 // copy static files
-utils.createCSSFolder(destinationFolder);
-utils.copyCSSFiles(cssDirectory, destinationFolder);
+utils.createCSSFolder(cssDestinationFolder);
+utils.copyCSSFiles(cssDirectory, cssDestinationFolder);
+
+utils.createCSSFolder(imgDestinationFolder);
+utils.copyCSSFiles(imgDirectory, imgDestinationFolder);
 
 template.renderList(lista_pagine, view);
 

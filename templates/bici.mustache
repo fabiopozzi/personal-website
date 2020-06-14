@@ -83,7 +83,35 @@
                             'line-width': 5
                           }
                         });
+                        
+                        // Pass the first coordinates in the LineString to `lngLatBounds` and
+                        // wrap each coordinate pair in `extend` to include them in the bounds
+                        // result
+                        var bounds = coordinates.reduce(function(bounds, coord) {
+                          return bounds.extend(coord);
+                        }, new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]));
+                        
+                        map.fitBounds(bounds, {
+                          padding: 20
+                        });
                         map.addControl(new mapboxgl.NavigationControl());
+                        // add markers to map
+                        // create a HTML element for each feature
+                        var el = document.createElement('div');
+                        el.className = 'marker';
+
+                        // make a marker for first point
+                        new mapboxgl.Marker(el)
+                          .setLngLat(coordinates[0])
+                          .addTo(map);
+
+                        var el = document.createElement('div');
+                        el.className = 'end-marker';
+
+                        // make a marker for first point
+                        new mapboxgl.Marker(el)
+                          .setLngLat(coordinates[coordinates.length - 1])
+                          .addTo(map);
                       });
                   </script>
                 </div>
