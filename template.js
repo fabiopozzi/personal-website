@@ -29,6 +29,7 @@ const regPartial = (partialName) => {
 
 const renderList = (listaPagine, view) => {
     regPartial('head')
+    regPartial('headbici')
     regPartial('navbar')
     listaPagine.forEach(item => {
         renderTemplate(item.template, item.page, view);
