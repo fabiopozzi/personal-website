@@ -21,7 +21,15 @@ const renderTemplate = (templateName, outputName, view) => {
         })
 }
 
+const regPartial = (partialName) => {
+    const partialFile = path.join('templates', partialName + '.mustache');
+    const partialData = fs.readFileSync(partialFile, 'utf8');
+    Handlebars.registerPartial(partialName, partialData);
+}
+
 const renderList = (listaPagine, view) => {
+    regPartial('head')
+    regPartial('navbar')
     listaPagine.forEach(item => {
         renderTemplate(item.template, item.page, view);
     })
