@@ -50,6 +50,11 @@ h3 {
     color: rgb(176, 202, 219);
 }
 
+.brand-title a:link, .brand-title a:visited {
+    text-decoration: none;
+    color: white;
+}
+
 .nav-list {
     margin: 0;
     padding: 0;
