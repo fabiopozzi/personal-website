@@ -1,9 +1,9 @@
 # Il mio sito personale
-In questo repository sto sperimentando la creazione di un generatore di siti statici usando nodejs che sia:
+In questo repository sto sperimentando la creazione di un generatore di siti statici usando nodeJS che sia:
 * minimalista
 * adatto alle mie esigenze
 
-Il templating delle pagine è basato solo su [mustache JS](https://github.com/janl/mustache.js).
+Il templating delle pagine è basato solo su [Handlebars](https://handlebarsjs.com).
 In questo modo il template è un semplice file HTML (no markdown).
 La creazione delle pagine è meno intuitiva ma c'è più controllo sul risultato finale (almeno per me).
 Mi sono affidato al classico [Bootstrap](https://getbootstrap.com) per creare un semplice layout a due colonne
@@ -20,3 +20,7 @@ A partire da questo file il sistema genera le pagine HTML che visualizzano quest
 
 La struttura del sito sarà creata in base alla suddivisione in cartelle, ma senza categorie o concetti troppo elaborati
 (vedi Hugo).
+
+Le web analytics sono raccolte grazie a [Goatcount](https://www.goatcounter.com) una piattatorma open source e meno invasiva degli altri servizi di analytics.
+
+
