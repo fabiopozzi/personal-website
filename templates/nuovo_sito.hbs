@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+    {{> head}}
+  <body>
+        {{>navbar}}
+        <div class="content pure-u-1 pure-u-md-3-4">
+              <div>
+                  <!-- A wrapper for all the blog posts -->
+                  <div class="posts">
+                      <section class="post">
+                          <header class="post-header">
+                            <h2 class="post-title">Un sito nuovo, fatto a mano!</h2>
+                          </header>
+                   <div class="post-description">
+                     <p>
+                        Visto il periodo di reclusione forzata ho deciso di riprendere in mano il buon vecchio sito web e renderlo più aggiornato e funzionale.
+                        In passato ho sperimentato l'uso di diversi strumenti per la generazione di pagine web statiche ma non sono riuscito ad esser mai pienamente soddisfatto del risultato finale.
+                        trovarne uno che mi
+                        permettesse di:
+                        <ul>
+                          <li>Strutturare facilmente i contenuti del sito</li>
+                          <li>Creare e personalizzare un tema in modo semplice</li>
+                          <li>Non dover installare l'interprete di un linguaggio che non uso per altro</li>
+                        </ul>
+                        L'idea era quella di minimizzare lo sbattimento del setup e concentrarmi sulla scrittura dei contenuti.
+                        Questa intenzione purtroppo è tristemente naufragata.
+                        Preso dalla frustrazione e costretto a casa dal lockdown di questo 2020 ho deciso di scriverne uno, da zero.
+                        Ovviamente questo mi ha permesso di applicare quanto imparato su nodeJS ad un progetto concreto, senza alcuna pretesa
+                        di fare meglio di quanto fosse già esistente.
+                        Per fare questo ho deciso di usare:
+                        <ul>
+                          <li>nodeJS</li>
+                          <li>Handlebars</li>
+                        </ul>
+                        Ognuna delle pagine al momento è definita da un template: questo mi permette di fare uso di partials per le parti di pagina
+                        ripetute (head, navbar, footer...) mentre il contenuto della pagina posso scriverlo direttamente in HTML.
+                        Vantaggi: semplicità.<br/>
+                        Non ho bisogno di poter scrivere i miei post usando markdown, sono in grado di fare uso direttamente di HTML.
+                     </p>
+                     <p>
+                        I file statici (es: CSS vari) sono in una sottocartella ben definita e vengono copiati nella cartella che conterrà tutti
+                        i file HTML generati che sono così pronti per essere copiati via rsync sul server.
+                        In questo caso il comportamento è quello che ci si attende da un normale generatore di siti statici.
+                     </p>
+                     <p>
+                     Pensando ai contenuti da inserire mi son accorto di voler inserire le tracce dei giri in bici fatte in questi anni,
+                     visualizzando la traccia GPX su di una mappa.
+                     Per fare questo ho deciso di usare mapbox al posto del solito google maps.
+                     Includere la pagina nel sito si è tradotto semplicemente nel creare un template apposito, cosa che con un generatore sarebbe stato
+                     leggermente più complesso dato che c'è una buona parte di javascript aggiunto alla pagina oltre alla gestione del file GPX.
+                     </p>
+                   </div>
+                  </div>
+              </div>
+        </div>
+  </body>
+</html>
+
