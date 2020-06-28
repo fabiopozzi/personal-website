@@ -12,9 +12,9 @@ const view = {
 };
 
 const lista_pagine = [
-  { page: "index", template: "index.mustache" },
-  { page: "about", template: "about.mustache" },
-  { page: "linux", template: "linux.mustache" },
+  { page: "index", template: "index.hbs" },
+  { page: "about", template: "about.hbs" },
+  { page: "linux", template: "linux.hbs" },
 ];
 const cssDirectory = "./static/css";
 const imgDirectory = "./static/img";
@@ -34,4 +34,4 @@ template.renderList(lista_pagine, view);
 
 const trackList = template.renderTracks(trackDirectory, gpxDirectory);
 trackList.sidebar = view.sidebar;
-template.renderTemplate('index_bici.mustache', 'bici', trackList);
+template.renderTemplate('index_bici.hbs', 'bici', trackList);

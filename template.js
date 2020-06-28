@@ -22,7 +22,7 @@ const renderTemplate = (templateName, outputName, view) => {
 }
 
 const regPartial = (partialName) => {
-    const partialFile = path.join('templates', partialName + '.mustache');
+    const partialFile = path.join('templates', partialName + '.hbs');
     const partialData = fs.readFileSync(partialFile, 'utf8');
     Handlebars.registerPartial(partialName, partialData);
 }
@@ -73,7 +73,7 @@ const renderTracks = (trackDirectory, gpxDirectory) => {
         trackObj.mapbox_key = process.env.MAPBOX_API_KEY;
         trackObj.sidebar = view.sidebar;
 
-        renderTemplate('bici.mustache', trackObj.nome_file, trackObj);
+        renderTemplate('bici.hbs', trackObj.nome_file, trackObj);
     })
 
     let trackList = {
