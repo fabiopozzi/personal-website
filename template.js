@@ -31,6 +31,7 @@ const renderList = (listaPagine, view) => {
     regPartial('head')
     regPartial('headbici')
     regPartial('navbar')
+    regPartial('footer')
     listaPagine.forEach(item => {
         renderTemplate(item.template, item.page, view);
     })
