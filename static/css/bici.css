@@ -40,3 +40,7 @@
   border-radius: 50%;
   cursor: pointer;
 }
+
+.track-title {
+    text-align: center;
+}
