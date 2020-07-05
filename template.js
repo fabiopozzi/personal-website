@@ -1,9 +1,6 @@
 const fs = require('fs')
 const path = require('path')
 const Handlebars = require("handlebars");
-const tj = require("@mapbox/togeojson");
-// node doesn't have xml parsing or a dom. use xmldom
-const DOMParser = require("xmldom").DOMParser;
 
 const renderTemplate = (templateName, outputName, view) => {
         // render template
@@ -63,14 +60,6 @@ const renderTracks = (trackDirectory, gpxDirectory) => {
     const trackArray = loadTrackFiles(trackDirectory);
 
     trackArray.forEach(trackObj => {
-        // read and convert gpx data
-        const gpxFile = path.join(gpxDirectory, trackObj.nome_file + '.gpx')
-        var gpxString = fs.readFileSync(gpxFile, "utf8");
-        var gpxData = new DOMParser().parseFromString(gpxString);
-        var geoData = JSON.stringify(tj.gpx(gpxData));
-
-        // add geoJSON data and mapbox data
-        trackObj.gpx = geoData;
         trackObj.mapbox_key = process.env.MAPBOX_API_KEY;
         trackObj.sidebar = view.sidebar;
 
