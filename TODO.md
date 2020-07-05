@@ -8,11 +8,18 @@ a quel punto vado a fare il render del template bici e genero una pagina
 
 ## Mappa
 - aggiungere marker inizio e fine DONE
+- usare leafletJS al posto di mapbox DONE
+- usare leaflet-elevation per fare disegno altitudine
+- ottenere mappe con indicazione profilo altimetrico
 
 ## Template
 - aggiungere funzione logica che non inserisce riga se la proprietà non ha valore
+- aggiungere descrizione testuale itinerario alle tracce bici
+- aggiungere link download tracce
+
 
 ## Altro
 - scrivere post su setup del tema
 - scrivere post su creazione generatore via nodeJS DONE
-- aggiunte analytics via goatanalytics
+- aggiunte analytics via goatanalytics DONE
+
