@@ -31,7 +31,15 @@
             zoom: 0
           });
           var gpx = 'https://fabiopozzi.net/gpx/{{nome_file}}.gpx';
-          new L.GPX(gpx, { async: true }).on('loaded', function (e) {
+
+          new L.GPX(gpx, {
+              async: true,
+              marker_options: {
+                startIconUrl: 'img/pin-icon-start.png',
+                endIconUrl: 'img/pin-icon-end.png',
+                shadowUrl: 'img/pin-shadow.png'
+              }
+            }).on('loaded', function (e) {
             map.fitBounds(e.target.getBounds());
           }).addTo(map);
         </script>
