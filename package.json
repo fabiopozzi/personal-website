@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@mapbox/togeojson": "^0.16.0",
     "dotenv": "^8.2.0",
     "handlebars": "^4.7.6"
   },
