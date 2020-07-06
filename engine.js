@@ -25,11 +25,13 @@ const cssDestinationFolder = path.join("content", "css");
 const imgDestinationFolder = path.join("content", "img");
 
 // copy static files
-utils.createCSSFolder(cssDestinationFolder);
-utils.copyCSSFiles(cssDirectory, cssDestinationFolder);
+utils.createFolder(cssDestinationFolder);
+utils.copyFiles(cssDirectory, cssDestinationFolder);
 
-utils.createCSSFolder(imgDestinationFolder);
-utils.copyCSSFiles(imgDirectory, imgDestinationFolder);
+utils.createFolder(imgDestinationFolder);
+utils.copyFiles(imgDirectory, imgDestinationFolder);
+
+// TODO: copiare anche la cartella gpx
 
 template.renderList(lista_pagine, view);
 

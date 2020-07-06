@@ -2,13 +2,12 @@ const fs = require('fs')
 const path = require('path')
 // TODO: organizzare costanti
 
-const copyCSSFiles = (cssDirectory, destinationFolder) => {
-    // CSS
+const copyFiles = (sourceDir, destDir) => {
     try {
-        const fileList = fs.readdirSync(cssDirectory)
+        const fileList = fs.readdirSync(sourceDir)
         fileList.forEach(item => {
-            const sourceFile = path.join(cssDirectory, item)
-            const destFile = path.join(destinationFolder, item)
+            const sourceFile = path.join(sourceDir, item)
+            const destFile = path.join(destDir, item)
             fs.copyFileSync(sourceFile, destFile)
             console.log('copiato ' + item)
         })
@@ -17,13 +16,13 @@ const copyCSSFiles = (cssDirectory, destinationFolder) => {
     }
 }
 
-const createCSSFolder = (destinationFolder) => {
+const createFolder = (folderPath) => {
     try {
         // mi baso sulla posizione corrente del file e vado a creare le
         // sottodirectory
-        if (!fs.existsSync(destinationFolder)) {
-            fs.mkdirSync(destinationFolder)
-            console.log('creato ' + destinationFolder)
+        if (!fs.existsSync(folderPath)) {
+            fs.mkdirSync(folderPath)
+            console.log('creato ' + folderPath)
         } else {
             console.log('directory esistente')
         }
@@ -33,6 +32,6 @@ const createCSSFolder = (destinationFolder) => {
 }
 
 module.exports = {
-    copyCSSFiles,
-    createCSSFolder
+    copyFiles,
+    createFolder
 }
