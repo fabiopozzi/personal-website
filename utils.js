@@ -3,19 +3,23 @@ const path = require('path')
 // TODO: organizzare costanti
 
 const copyRecursiveSync = (src, dst) => {
-    var exists = fs.existsSync(src);
-    var stats = exists && fs.lstatSync(src);
-    var isDirectory = exists && stats.isDirectory();
+    try {
+        var exists = fs.existsSync(src);
+        var stats = exists && fs.lstatSync(src);
+        var isDirectory = exists && stats.isDirectory();
 
-    if (isDirectory) { // se il src e' una directory
-        fs.mkdirSync(dst); // crea una directory destinazione
-        fs.readdirSync(src).forEach(file => {
-            const newSrc = path.join(src, file);
-            const newDst = path.join(dst, file);
-            copyRecursiveSync(newSrc, newDst);
-        })
-    } else {
-        fs.copyFileSync(src, dst);
+        if (isDirectory) { // se il src e' una directory
+            fs.mkdirSync(dst); // crea una directory destinazione
+            fs.readdirSync(src).forEach(file => {
+                const newSrc = path.join(src, file);
+                const newDst = path.join(dst, file);
+                copyRecursiveSync(newSrc, newDst);
+            })
+        } else {
+            fs.copyFileSync(src, dst);
+        }
+    } catch(e) {
+        console.log(e);
     }
 }
 
