@@ -16,7 +16,7 @@ const lista_pagine = [
   { page: "about", template: "about.hbs" },
   { page: "linux", template: "linux.hbs" },
   { page: "nuovo_sito", template: "nuovo_sito.hbs" },
-  { page: "reveal", template: "reveal.hbs" },
+  { page: "esempi_cat", template: "esempi_cat.hbs" },
 ];
 const cssDirectory = "./static/css";
 const imgDirectory = "./static/img";

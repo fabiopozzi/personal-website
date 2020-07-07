@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Introduzione al terminale</title>
 
 		<link rel="stylesheet" href="reveal/dist/reset.css">
 		<link rel="stylesheet" href="reveal/dist/reveal.css">
@@ -16,8 +16,34 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+          <section>
+              <h2>Esempi di uso di cat</h2>
+          </section>
+          <section>
+              <h3>Mostra il contenuto di un file</h3>
+              <pre>
+                <code data-trim>
+                  # cat /home/fabio/dati.txt
+                </code>
+              </pre>
+          </section>
+          <section>
+              <h3>Mostra il contenuto di un file numerando le righe</h3>
+              <pre>
+                <code data-trim>
+                  # cat -n /home/fabio/dati.txt
+                </code>
+              </pre>
+          </section>
+          <section>
+              <h3>3. Concatena più file in un unico nuovo file</h3>
+              <pre>
+                <code data-trim>
+                  # cat file1 file2 file3 > output_file
+                </code>
+              </pre>
+          </section>
 			</div>
 		</div>
 
