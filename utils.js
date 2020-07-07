@@ -2,17 +2,20 @@ const fs = require('fs')
 const path = require('path')
 // TODO: organizzare costanti
 
-const copyFiles = (sourceDir, destDir) => {
-    try {
-        const fileList = fs.readdirSync(sourceDir)
-        fileList.forEach(item => {
-            const sourceFile = path.join(sourceDir, item)
-            const destFile = path.join(destDir, item)
-            fs.copyFileSync(sourceFile, destFile)
-            console.log('copiato ' + item)
+const copyRecursiveSync = (src, dst) => {
+    var exists = fs.existsSync(src);
+    var stats = exists && fs.lstatSync(src);
+    var isDirectory = exists && stats.isDirectory();
+
+    if (isDirectory) { // se il src e' una directory
+        fs.mkdirSync(dst); // crea una directory destinazione
+        fs.readdirSync(src).forEach(file => {
+            const newSrc = path.join(src, file);
+            const newDst = path.join(dst, file);
+            copyRecursiveSync(newSrc, newDst);
         })
-    } catch(e) {
-        console.log(e)
+    } else {
+        fs.copyFileSync(src, dst);
     }
 }
 
@@ -32,6 +35,6 @@ const createFolder = (folderPath) => {
 }
 
 module.exports = {
-    copyFiles,
+    copyRecursiveSync,
     createFolder
 }
