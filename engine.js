@@ -16,6 +16,7 @@ const lista_pagine = [
   { page: "about", template: "about.hbs" },
   { page: "linux", template: "linux.hbs" },
   { page: "introduzione", template: "introduzione1.hbs" },
+  { page: "selezione", template: "selezione_iterazione2.hbs" },
   { page: "nuovo_sito", template: "nuovo_sito.hbs" },
   { page: "esempi_cat", template: "esempi_cat.hbs" },
 ];

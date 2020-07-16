@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Introduzione al terminale</title>
+
+    <link rel="stylesheet" href="reveal/dist/reset.css">
+    <link rel="stylesheet" href="reveal/dist/reveal.css">
+    <link rel="stylesheet" href="reveal/dist/theme/black.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="reveal/plugin/highlight/monokai.css" id="highlight-theme">
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>I blocchi</h2>
+          <p class="fragment">
+          Sono una successione di istruzioni racchiuse tra parentesi graffe
+          </p>
+          </section>
+          <section>
+          <h3>Esempio:</h3>
+          <p>
+          <pre>
+          <code style="max-height: none;">
+{
+    // questo e' un nuovo blocco
+    istruzione1;
+    istruzione2;
+}
+</code>
+</pre>
+</p>
+        </section>
+        <section>
+        <p>
+        All'interno di un blocco si possono inserire altri blocchi, che sono quindi <b>annidati</b>.
+        </p>
+        </section>
+        <section>
+        <h3>Esempio blocco annidato:</h3>
+        <p>
+        <pre>
+        <code style="max-height: none;">
+{
+    // primo blocco
+    istruzione1;
+    {
+        // blocco annidato
+        istruzione2;
+        istruzione3;
+    }
+    istruzione4;
+}
+</code>
+</pre>
+</p>
+        </section>
+        <section>
+        <h2>Selezione</h2>
+        <p>
+        I costrutti <code>if</code> ed <code>else</code> permettono di definire due percorsi di esecuzione diversi</p>
+        <p>
+        <pre>
+        <code style="max-height: none;">
+if (&lt;condizione&gt;) {
+    /* istruzioni blocco IF */
+} else {
+    /* istruzioni blocco ELSE */
+}
+/* altro */
+</code>
+</pre>
+</p>
+</section>
+        <section>
+        <h2>Selezione</h2>
+        <p>
+La parte <code>else</code> è opzionale, possiamo quindi scrivere un solo blocco IF
+</p>
+<p>
+        <pre>
+        <code style="max-height: none;">
+if (&lt;condizione&gt;) {
+    /* istruzioni blocco IF */
+}
+</code>
+</pre>
+</p>
+</section>
+      </div>
+    </div>
+
+    <script src="reveal/dist/reveal.js"></script>
+    <script src="reveal/plugin/notes/notes.js"></script>
+    <script src="reveal/plugin/markdown/markdown.js"></script>
+    <script src="reveal/plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        width: "100%",
+        height: "100%",
+        margin: 0,
+        minScale: 1,
+        maxScale: 1,
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+      });
+    </script>
+  </body>
+
+</html>
+
