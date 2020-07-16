@@ -18,21 +18,14 @@ const lista_pagine = [
   { page: "nuovo_sito", template: "nuovo_sito.hbs" },
   { page: "esempi_cat", template: "esempi_cat.hbs" },
 ];
-const cssDirectory = "./static/css";
-const imgDirectory = "./static/img";
-const revealDirectory = "./static/reveal";
 const trackDirectory = "./track_data"
 const gpxDirectory = "./gpx"
-const cssDestinationFolder = path.join("content", "css");
-const imgDestinationFolder = path.join("content", "img");
-const revealDestinationFolder = path.join("content", "reveal");
 
 // copy static files
-utils.copyRecursiveSync(cssDirectory, cssDestinationFolder);
-
-utils.copyRecursiveSync(imgDirectory, imgDestinationFolder);
-
-utils.copyRecursiveSync(revealDirectory, revealDestinationFolder);
+utils.copyRecursiveSync(path.join("static", "css"), path.join("content", "css"));
+utils.copyRecursiveSync(path.join("static", "img"), path.join("content", "img"));
+utils.copyRecursiveSync(path.join("static", "reveal"), path.join("content", "reveal"));
+utils.copyRecursiveSync(gpxDirectory, path.join("content", "gpx"));
 
 // TODO: copiare anche la cartella gpx
 
