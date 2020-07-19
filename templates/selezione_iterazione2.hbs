@@ -94,6 +94,106 @@ if (&lt;condizione&gt;) {
 </pre>
 </p>
 </section>
+<section>
+<h2>Iterazione</h2>
+
+<p>L'iterazione è un costrutto che permette di definire un blocco di istruzioni e di eseguirlo più volte.</p>
+
+<p>Elementi che costituiscono un costrutto di iterazione:
+<ul>
+<li><b>inizializzazione</b></li>
+<li><b>test</b></li>
+<li><b>modifica</b></li>
+</ul>
+</p>
+</section>
+<section>
+<h2>Inizializzazione</h2>
+<p>Le variabili usate all'interno del blocco ripetuto e quelle usate per la condizione di uscita dal ciclo devono essere inizializzate</p>
+<p>L'omissione di questa parte è alla base di molti errori in quanto il valore di una variabile non inizializzata non è definito</p>
+</section>
+<section>
+<h2>test</h2>
+<p>Valutazione della condizione di <b>permanenza</b> nel ciclo</p>
+<p>Questa parte del ciclo / iterazione è la più delicata</p>
+</section>
+<section>
+<h2>Modifica</h2>
+<p>Modifica di almeno uno degli elementi valutati nella fase di <b>test</b></p>
+<p>
+ La fase di <b>modifica</b> fa in modo che prima o poi la valutazione della condizione di permanenza nel ciclo risulti falsa, interrompendolo.
+</p>
+<p>Se non modifichiamo nessuno degli elementi valutati nella fase di test (e la fase di test non fa riferimento ad alcuna funzione esterna) ci troviamo molto probabilmente di fronte ad un ciclo infinito!
+</p>
+</section>
+<section>
+ Esempio: ciclo for
+
+<pre>
+<code style="max-height: none;">
+ for (&lt;inizializzazione&gt;; &lt;test&gt;; &lt;modifica&gt;) {
+    &lt;blocco ripetuto&gt;
+ }
+</code>
+</pre>
+<p>
+ Esempio: ciclo while
+</p>
+<pre>
+<code style="max-height: none;">
+ &lt;inizializzazione&gt;
+ while (&lt;test&gt;) {
+    &lt;blocco ripetuto&gt;
+    &lt;modifica&gt;
+ }
+</code>
+</pre>
+</section>
+<section>
+<h2>Riepilogando</h2>
+<p>
+Il blocco ripetuto viene eseguito finche <code>&lt;test&gt;</code> risulta vero
+</p>
+<p>
+Il ciclo viene inizializzato esternamente al blocco ripetuto.
+</p>
+<p>
+La valutazione della condizione di iterazione (<code>test</code>) viene eseguita prima dell'esecuzione del <code>&lt;blocco ripetuto&gt;</code>
+</p>
+</section>
+<section>
+<h2>Riepilogando</h2>
+<p>
+Il costrutto nel suo corpo oltre ad ospitare il <code>&lt;blocco ripetuto&gt;</code> deve contenere una
+<code>&lt;modifica&gt;</code> della condizione di test.
+</p>
+</section>
+<section>
+<h2>Loop infinito</h2>
+<p>
+Un errore comune è quello di dimenticare la parte di <code>&lt;modifica&gt;</code>, questo porta ad una condizione anomala per cui il flusso di esecuzione non è in grado di uscire dall'iterazione.</p>
+<p>
+Un altro errore comune è un errore logico nella condizione di <code>&lt;test&gt;</code> che porta la condizione ad essere sempre vera dunque il flusso di esecuzione anche in questo caso porta ad un loop infinito!
+</p>
+</section>
+<section>
+<h2>Esempi:</h2>
+<pre>
+<code style="max-height: none;">
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+  int a = 1;
+  while ( a &gt; 0 ) {
+      printf(“%d”, a);
+      // loop "infinito"!
+      a++;
+  }
+  return 0;
+}
+</code>
+</pre>
       </div>
     </div>
 
