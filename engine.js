@@ -18,7 +18,7 @@ const lista_pagine = [
   { page: "introduzione", template: "introduzione1.hbs" },
   { page: "selezione", template: "selezione_iterazione2.hbs" },
   { page: "nuovo_sito", template: "nuovo_sito.hbs" },
-  { page: "esempi_cat", template: "esempi_cat.hbs" },
+  { page: "linux_kernel", template: "linux_kernel.hbs" },
 ];
 const trackDirectory = "./track_data"
 const gpxDirectory = "./gpx"

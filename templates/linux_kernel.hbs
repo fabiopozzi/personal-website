@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+    {{> head}}
+  <body>
+        {{>navbar}}
+        <div class="content pure-u-1 pure-u-md-3-4">
+              <div>
+                  <!-- A wrapper for all the blog posts -->
+                  <div class="posts">
+                      <section class="post">
+                          <header class="post-header">
+                            <h1 class="post-title">Ricompilare il linux kernel - part 1</h1>
+                          </header>
+                   <div class="post-description">
+                     <p>
+                     In questa prima parte della serie di articoli, ci baseremo su di un sistema <a href="https://www.debian.org/">debian</a> (ad esempio facendo uso di una virtual machine con debian stable).
+                     </p>
+                     <h2> Ottenere i sorgenti del kernel </h2>
+                     <p>
+Installiamo il pacchetto contenente i sorgenti del Linux kernel con già incluse le patch aggiunte da Debian (fix vari di bug e vulnerabilità di sicurezza).
+                     </p>
+                     <p>
+<code>
+$ sudo apt install linux-source-4.19
+</code>
+                     </p>
+                     <p>
+Questo comando dovrebbe portare anche all'installazione di alcune dipendenze che ci serviranno per poter compilare il kernel.
+Verranno quindi scaricati ed installati (se non lo abbiamo già fatto) il compilatore gcc, i pacchettti binutils, make, bison, flex ed alcune librerie utili.
+                     </p>
+                     <h2>Installiamo altre librerie utili</h2>
+                     <p>
+                     Installiamo anche le librerie ncurses, libelf e libssl (ci saranno utili più avanti) con il comando
+                     </p>
+                     <p>
+<code>
+$ sudo apt install libncurses-dev libelf-dev libssl-dev
+</code>
+                     </p>
+                     <h2>Configuriamo il kernel</h2>
+                     <p>
+                     Troveremo i sorgenti scaricati in <code>/usr/src</code> quindi potremo decomprimerli nella directory corrente con
+                     </p>
+                     <p>
+<code>
+$ tar xaf /usr/src/linux-source-4.19.tar.xz
+</code>
+                     </p>
+                     <p>
+                     Avremo quindi una nuova directory <code>linux-source-4.19</code> nella quale entriamo con il comando
+                     </p>
+                     <p>
+<code>
+$ cd linux-source-4.19
+</code>
+                     </p>
+                     <p>
+Definiamo una configurazione del kernel che parta da quella corrente, quindi usiamo l'opzione
+                     </p>
+                     <p>
+<code>
+$ make localmodconfig
+</code>
+                     </p>
+                     <p>
+Ci verrà chiesto se includere o ignorare nuove opzioni o il supporto a nuove periferiche che sono state aggiunte nel kernel che stiamo ricompilando (rispetto a quello che attualmente gira sul nostro PC).
+                     </p>
+                     <p>
+                     Una volta risposto a queste domande (possiamo premere invio per far uso della opzione di default se non sappiamo cosa rispondere) otterremo un nuovo file <code>.config</code> che rappresenta la nostra nuova configurazione.
+                     </p>
+                     <p>
+Ora possiamo visualizzare e modificare la configurazione del kernel che abbiamo definito con
+                     </p>
+                     <p>
+<code>
+$ make nconfig
+</code>
+                     </p>
+                     <p>
+A questo punto volendo possiamo rimuovere il supporto ad hardware che non possediamo, etc etc.
+                     </p>
+                     <p>
+Faremo uso di F2 per ottenere più informazioni su una determinata opzione, mentre useremo F5 per risalire di un livello nel menù.
+                     </p>
+                     <p>
+Quando abbiamo finito premiamo F6 per salvare la nuova configurazione (possiamo sovrascrivere la precedente o assegnare un nuovo nome) e poi usciamo con F9.
+                     </p>
+                     <h2>Compiliamo e installiamo il kernel</h2>
+                     <p>
+Per compilare usiamo il comando
+                     </p>
+                     <p>
+<code>
+$ make deb-pkg
+</code>
+                     </p>
+                     <p>
+                     Alla fine del processo nella cartella superiore a questa dei sorgenti otterremo dei file <code>.deb</code>.
+
+Se installiamo il kernel con
+                     </p>
+                     <p>
+<code>
+$ dpkg -i ../linux-4.19.118_4.19.118-1_amd64.deb
+</code>
+                     </p>
+                     <p>
+Al prossimo avvio del sistema faremo uso del nostro kernel compilato e installato!
+                     </p>
+                   </div>
+                  </div>
+              </div>
+        </div>
+  </body>
+</html>
+
