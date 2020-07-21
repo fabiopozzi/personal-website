@@ -6,16 +6,36 @@ const renderTemplate = (templateName, outputName, view) => {
         // render template
         const templateFile = path.join('templates', templateName);
         const outputFile = path.join('content', outputName + '.html');
-        const templateData = fs.readFileSync(templateFile, 'utf8');
+        var refreshFile = false;
 
-        const template = Handlebars.compile(templateData)
-        const pageData = template(view);
-        fs.writeFile(outputFile, pageData, (err) => {
-            // throws an error, you could also catch it here
-            if (err) throw err;
+        try {
+            fs.accessSync(outputFile, fs.constants.F_OK);
+            // if file exists
+            const outfileStats = fs.statSync(outputFile);
+            const templateStats = fs.statSync(templateFile);
+            if (templateStats.atimeMs > outfileStats.atimeMs) {
+                console.log(templateFile + " must be refreshed.")
+                refreshFile = true;
+            }
+        } catch (err) {
+            console.error(outputFile + ' doesn\'t exists!');
+            refreshFile = true;
+        }
+        // console.log(outputFile + " atimeMs: " + outfileStats.atimeMs);
+        // console.log(templateFile + " atimeMs: " + templateStats.atimeMs);
+        if (refreshFile) {
+            const templateData = fs.readFileSync(templateFile, 'utf8');
 
-            console.log('File ' + outputFile + ' saved!');
-        })
+            const template = Handlebars.compile(templateData)
+            const pageData = template(view);
+            // bisognerebbe controllare che il file non esista gia' prima di fare il render di nuovo
+            fs.writeFile(outputFile, pageData, (err) => {
+                // throws an error, you could also catch it here
+                if (err) throw err;
+
+                console.log('File ' + outputFile + ' saved!');
+            })
+        }
 }
 
 const regPartial = (partialName) => {
