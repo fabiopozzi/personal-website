@@ -12,10 +12,8 @@ const copyRecursiveSync = (src, dst) => {
             try {
                 fs.mkdirSync(dst); // crea una directory destinazione
             } catch(e) {
-                if (e && e.code === 'EEXIST') {
-                    // file already exists
-                    console.log('Folder ' + dst + ' already exists');
-                } else {
+                // ignore file already exists error
+                if (e && e.code !== 'EEXIST') {
                     // other error
                     console.log(e);
                 }
