@@ -6,14 +6,14 @@ require("dotenv").config();
 
 const view = {
   sidebar: [
-    { link: "about.html", title: "About" },
+    { link: "chi_sono.html", title: "Chi sono" },
     { link: "bici.html", title: "Bici" },
   ],
 };
 
 const lista_pagine = [
   { page: "index", template: "index.hbs" },
-  { page: "about", template: "about.hbs" },
+  { page: "chi_sono", template: "about.hbs" },
   { page: "linux", template: "linux.hbs" },
   { page: "introduzione", template: "introduzione1.hbs" },
   { page: "selezione", template: "selezione_iterazione2.hbs" },
@@ -28,8 +28,6 @@ utils.copyRecursiveSync(path.join("static", "css"), path.join("content", "css"))
 utils.copyRecursiveSync(path.join("static", "img"), path.join("content", "img"));
 utils.copyRecursiveSync(path.join("static", "reveal"), path.join("content", "reveal"));
 utils.copyRecursiveSync(gpxDirectory, path.join("content", "gpx"));
-
-// TODO: copiare anche la cartella gpx
 
 template.renderList(lista_pagine, view);
 
