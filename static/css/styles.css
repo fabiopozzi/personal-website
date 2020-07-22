@@ -34,7 +34,7 @@ h3 {
 }
 
 .sidebar {
-    background: rgb(61, 79, 93);
+    background: #0D3055;
     color: #fff;
 }
 
@@ -56,9 +56,14 @@ h3 {
 }
 
 .nav-list {
-    margin: 0;
+    margin-top: 0;
+    margin-bottom: 1rem;
     padding: 0;
     list-style: none;
+}
+.nav-list a {
+    text-decoration: none;
+    color: #fff;
 }
 .nav-item {
     display: inline-block;
