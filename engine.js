@@ -19,6 +19,7 @@ const lista_pagine = [
   { page: "selezione", template: "selezione_iterazione2.hbs" },
   { page: "nuovo_sito", template: "nuovo_sito.hbs" },
   { page: "linux_kernel", template: "linux_kernel.hbs" },
+  { page: "doom_emacs", template: "doom_emacs.hbs" },
 ];
 const trackDirectory = "./track_data"
 const gpxDirectory = "./gpx"
