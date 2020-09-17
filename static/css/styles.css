@@ -65,6 +65,13 @@ h3 {
     text-decoration: none;
     color: #fff;
 }
+
+.nav-item-icon {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+
 .nav-item {
     display: inline-block;
     *display: inline;
