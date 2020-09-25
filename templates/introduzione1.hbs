@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Introduzione al terminale</title>
+    <title>Introduzione al linguaggio C</title>
 
     <link rel="stylesheet" href="reveal/dist/reset.css">
     <link rel="stylesheet" href="reveal/dist/reveal.css">
@@ -19,17 +19,32 @@
     <div class="reveal">
       <div class="slides">
         <section>
+          <h2>Introduzione al linguaggio C</h2>
+        </section>
+        <section>
           <h2>Cenni storici</h2>
-          <p class="fragment">Il linguaggio C è un linguaggio di programmazione di alto livello, sviluppato negli anni 70.</p>
-          <p class="fragment">Col passare degli anni sono nati linguaggi che offrono più astrazione (ruby, python, haskell), ma ogni astrazione ha spesso un costo in termini di risorse occupate (memoria, CPU).</p>
-          <p class="fragment">Il linguaggio C è il meno astratto tra i linguaggi di alto livello, questo lo rende adatto a dispositivi con poche risorse (sistemi embedded).</p>
+          <p>Il linguaggio C è un linguaggio di programmazione di alto livello che nasce nei primi anni 70 in funzione dello sviluppo del sistema operativo Unix.</p>
+          <p class="fragment">Quando venne sviluppato i computer avevano un hardware estremamente limitato per gli standard odierni</p>
+          <p class="fragment">La priorità quindi era la massima efficienza nell'uso delle risorse di sistema</p>
         </section>
         <section>
-        <p class="fragment">I sorgenti di un programma C non sono altro che file di testo strutturati in modo opportuno.</p>
-        <p class="fragment">Quanto scritto all'interno di questi file viene trasformato in un file contenente del linguaggio macchina</p>
-        <p class="fragment">che può quindi essere eseguito dal computer.</p>
+          <p class="fragment">La prima implementazione di Unix girava su un sistema con 148 Kbyte di RAM - KB e non di GB, ovvero molta meno memoria di un qualsiasi smartwatch</p>
+          <p class="fragment">Col passare degli anni sono nati linguaggi che offrono più astrazione (ruby, python, haskell)</p>
+          <p class="fragment">ma ogni astrazione ha spesso un costo in termini di risorse occupate (memoria, CPU).</p>
         </section>
         <section>
+          <p>Il linguaggio C è il meno astratto tra i linguaggi di alto livello</p>
+          <p>questo lo ha reso adatto come linguaggio per la programmazione di sistemi operativi (il kernel Linux è scritto in C)</p>
+          <p>viene inoltre usato per la programmazione di dispositivi con risorse limitate (es: sistemi embedded).</p>
+        </section>
+        <section>
+          <h2>Struttura di un programma C</h2>
+          <p class="fragment">I sorgenti di un programma C non sono altro che file di testo strutturati in modo opportuno.</p>
+          <p class="fragment">Quanto scritto all'interno di questi file viene trasformato in un file contenente del linguaggio macchina</p>
+          <p class="fragment">che può quindi essere eseguito dal computer.</p>
+        </section>
+        <section>
+          <p>Un programma C consiste di uno o più files, i quali contengono funzioni, ognuna delle quali è composta da istruzioni. I file sorgenti possono anche contenere dichiarazioni di variabili locali o globali</p>
           <pre>
 <code style="max-height: none;">#include &lt;stdio.h&gt; // Direttive per il compilatore
 
@@ -47,13 +62,29 @@ int main()
             b = 1;
         }
 
-        return b;
+        printf("b vale %d\n", b);
+        return 0;
 }
 </code></pre>
         </section>
         <section>
+          <h3>La funzione main()</h3>
+          <p>La parola <code>main</code> identifica la funzione principale del programma. Questa funzione viene chiamata quando il programma viene lanciato.</p>
+          <p>Possiamo quindi dire che rappresenta il <i>punto di ingresso</i> del nostro programma</p>
+          <p>Le parentesi graffe { ed } racchiudono le istruzioni che verranno eseguite dal nostro computer.</p>
+        </section>
+        <section>
+          <h3>La funzione main()</h3>
+          <p>All'interno della funzione main possiamo trovare delle chiamate ad altre funzioni, in questo caso <code>printf</code>.
+          <p>Ogni funzione che vogliamo utilizzare deve essere dichiarata da qualche parte prima di poter esser usata.</p>
+          <p>In questo caso è il file <code>stdio.h</code> a contenere la dichiarazione della funzione.</p>
+          <p>La dichiarazione di una funzione contiene le informazioni necessarie sul valore di ritorno e sugli argomenti ricevuti dalla funzione, in modo che il compilatore
+            sappia come generare la chiamata a funzione</p>
+        </section>
+        <section>
           <h3>Direttive per il preprocessore</h3>
-          <p>Le direttive sono istruzioni particolari che iniziano con # ed indicano l'intenzione di utilizzare
+          <p>Le direttive sono istruzioni particolari che iniziano con # (cancelletto o hashtag).</p>
+          <p>La direttiva <code>include</code> ci permette di fare in modo che il preprocessore copi
           una libreria esterna (che implementa una serie di funzionalità).</p>
           <p>
           <ul>
@@ -62,12 +93,6 @@ int main()
             <li>...</li>
           </ul>
           </p>
-        </section>
-        <section>
-          <h3>La funzione main()</h3>
-          <p>La parola chiave <code>main</code> indica l'inizio del programma.</p>
-
-          <p>Le parentesi graffe { ed } racchiudono le istruzioni che verranno eseguite dall'elaboratore.</p>
         </section>
         <section>
           <h2>Le variabili</h2>
