@@ -13,16 +13,16 @@ const renderTemplate = (templateName, outputName, view) => {
             // if file exists
             const outfileStats = fs.statSync(outputFile);
             const templateStats = fs.statSync(templateFile);
-            if (templateStats.atimeMs > outfileStats.atimeMs) {
-                console.log(templateFile + " must be refreshed.")
+            if (templateStats.mtime > outfileStats.mtime) {
+                console.log(templateFile + " must be updated.")
                 refreshFile = true;
             }
         } catch (err) {
             console.error(outputFile + ' doesn\'t exists!');
             refreshFile = true;
         }
-        // console.log(outputFile + " atimeMs: " + outfileStats.atimeMs);
-        // console.log(templateFile + " atimeMs: " + templateStats.atimeMs);
+        // console.log(outputFile + " mtime: " + outfileStats.mtime);
+        // console.log(templateFile + " mtime: " + templateStats.mtime);
         if (refreshFile) {
             const templateData = fs.readFileSync(templateFile, 'utf8');
 
