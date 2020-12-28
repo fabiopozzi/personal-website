@@ -16,11 +16,15 @@ const lista_pagine = [
   { page: "chi_sono", template: "about.hbs" },
   { page: "linux", template: "linux.hbs" },
   { page: "introduzione", template: "introduzione1.hbs" },
-  { page: "selezione", template: "selezione_iterazione2.hbs" },
   { page: "nuovo_sito", template: "nuovo_sito.hbs" },
   { page: "linux_kernel", template: "linux_kernel.hbs" },
   { page: "doom_emacs", template: "doom_emacs.hbs" },
+  { page: "dna_informatico", template: "dna_informatico.hbs" },
 ];
+/*
+  { page: "selezione", template: "selezione_iterazione2.hbs" },
+  { page: "funzioni", template: "funzioni.hbs" },
+*/
 const trackDirectory = "./track_data"
 const gpxDirectory = "./gpx"
 
