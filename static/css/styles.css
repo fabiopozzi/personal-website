@@ -107,7 +107,7 @@ h3 {
 }
 
 .post {
-    padding-bottom: 2em;
+    padding-bottom: 1em;
 }
 .post-title {
     font-size: 2em;
@@ -124,6 +124,7 @@ h3 {
     color: #444;
     line-height: 1.8em;
 }
+
 .post-meta {
     color: #999;
     font-size: 90%;
@@ -137,18 +138,19 @@ h3 {
     background: #999;
     font-size: 80%;
 }
-    .post-category-design {
-        background: #5aba59;
-    }
-    .post-category-pure {
-        background: #4d85d1;
-    }
-    .post-category-yui {
-        background: #8156a7;
-    }
-    .post-category-js {
-        background: #df2d4f;
-    }
+
+.post-category-design {
+    background: #5aba59;
+}
+.post-category-pure {
+    background: #4d85d1;
+}
+.post-category-yui {
+    background: #8156a7;
+}
+.post-category-js {
+    background: #df2d4f;
+}
 
 .post-images {
     margin: 1em 0;
